@@ -1,13 +1,6 @@
 import { fetchAdresses } from '../managers/adressesManager'
 
-import {
-  put,
-  call,
-  all,
-  select,
-  takeEvery,
-  takeLatest,
-} from 'redux-saga/effects'
+import { put, call, select, takeEvery } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import { getAdress } from '../selectors/selectors'
 import { loadAdresses, INPUT_ADRESS } from '../actions/actions'
@@ -22,7 +15,4 @@ const loadFetchEvents = function*() {
 const watchLoadFetchEvents = function*() {
   yield takeEvery(INPUT_ADRESS, loadFetchEvents)
 }
-
-export const rootSaga = function*() {
-  yield all([call(watchLoadFetchEvents)])
-}
+export default watchLoadFetchEvents

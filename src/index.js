@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import Root from './components/Root'
 import { Provider } from 'react-redux'
 import store, { sagaMiddleware } from './configureStore'
-import { rootSaga } from './sagas/saga'
+import rootSaga from './sagas'
 
 sagaMiddleware.run(rootSaga)
 

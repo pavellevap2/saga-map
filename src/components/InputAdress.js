@@ -1,6 +1,13 @@
 import React from 'react'
 
-const InputAdress = ({ adress, inputAdress, adresses, selectAdress }) => {
+const InputAdress = ({
+  adress,
+  inputAdress,
+  adresses,
+  selectAdress,
+  addCoordinates,
+  coordinates,
+}) => {
   return (
     <div>
       <input
@@ -23,6 +30,8 @@ const InputAdress = ({ adress, inputAdress, adresses, selectAdress }) => {
           </li>
         ))}
       </ul>
+      <button onClick={() => addCoordinates(adress)}>ПОИСК</button>
+      <button onClick={() => console.log(coordinates)}>test</button>
     </div>
   )
 }
