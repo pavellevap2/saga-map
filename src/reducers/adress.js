@@ -1,4 +1,4 @@
-import { INPUT_ADRESS, SELECT_ADRESS } from '../actions/actions'
+import { INPUT_ADRESS, SELECT_ADRESS } from '../actions/actionTypes'
 
 const adress = (state = '', { type, payload }) => {
   switch (type) {

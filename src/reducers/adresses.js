@@ -1,4 +1,4 @@
-import { LOAD_ADRESSES } from '../actions/actions'
+import { LOAD_ADRESSES } from '../actions/actionTypes'
 
 export const adresses = (state = [], { type, payload }) => {
   switch (type) {

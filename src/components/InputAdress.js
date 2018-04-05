@@ -31,9 +31,6 @@ const SearchBtn = styled.button`
     background-color: antiquewhite;
   }
 `
-const AdressesList = styled.ul`
-  border: 1px solid blue;
-`
 
 class InputAdress extends React.Component {
   constructor(props) {

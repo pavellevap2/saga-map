@@ -3,7 +3,8 @@ import { fetchAdresses } from '../managers/adressesManager'
 import { put, call, select, takeEvery } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import { getAdress } from '../selectors/selectors'
-import { loadAdresses, INPUT_ADRESS } from '../actions/actions'
+import { loadAdresses } from '../actions/actions'
+import { INPUT_ADRESS } from '../actions/actionTypes'
 
 const loadFetchEvents = function*() {
   yield delay(1200)

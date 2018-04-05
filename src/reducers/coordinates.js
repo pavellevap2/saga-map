@@ -1,4 +1,4 @@
-import { ADD_NEW_COORDINATES } from '../actions/actions'
+import { ADD_NEW_COORDINATES } from '../actions/actionTypes'
 
 const coordinates = (state = '', { type, payload }) => {
   switch (type) {
