@@ -6,9 +6,15 @@ import {
   Marker,
 } from 'react-google-maps'
 
+import styled from 'styled-components'
+
+const MapContainer = styled.div`
+  position: relative;
+  z-index: -1;
+`
 const GoogleMapComponent = withScriptjs(
   withGoogleMap(props => (
-    <div>
+    <MapContainer>
       <GoogleMap
         defaultZoom={12}
         defaultCenter={props.position}
@@ -28,7 +34,7 @@ const GoogleMapComponent = withScriptjs(
           />
         )}
       </GoogleMap>
-    </div>
+    </MapContainer>
   )),
 )
 export default GoogleMapComponent

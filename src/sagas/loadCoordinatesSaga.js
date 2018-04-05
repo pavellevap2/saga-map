@@ -1,7 +1,7 @@
 import { fetchCoordinates } from '../managers/coordinatesManages'
 
 import { put, call, select, takeEvery } from 'redux-saga/effects'
-import { getAdress } from '../selectors/selectors'
+import { getAdress } from '../selectors/inputSelectors'
 import { addCoordinates } from '../actions/actions'
 import { LOAD_COORDINATES } from '../actions/actionTypes'
 

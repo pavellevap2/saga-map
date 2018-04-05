@@ -1,11 +1,9 @@
 import { LOAD_ADRESSES } from '../actions/actionTypes'
+import { handleAction } from 'redux-actions'
 
-export const adresses = (state = [], { type, payload }) => {
-  switch (type) {
-    case LOAD_ADRESSES:
-      return payload
-    default:
-      return state
-  }
-}
+export const adresses = handleAction(
+  [LOAD_ADRESSES],
+  (state, { payload }) => payload,
+  [],
+)
 export default adresses
