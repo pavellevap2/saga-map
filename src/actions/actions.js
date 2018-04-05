@@ -1,30 +1,18 @@
-export const INPUT_ADRESS = '@@INPUT_ADRESS/NEW_ADRESS'
-export const LOAD_ADRESSES = '@@INPUT_ADRESS/LOAD_ADRESSES'
-export const SELECT_ADRESS = `@@INPUT_ADRESS/SELECT_ADRESS`
-export const ADD_NEW_COORDINATES = `@@INPUT_ADRESS/ADD_NEW_COORDINATES`
-export const LOAD_COORDINATES = `@@INPUT/LOAD_COORDINATES`
+import {
+  INPUT_ADRESS,
+  LOAD_ADRESSES,
+  SELECT_ADRESS,
+  LOAD_COORDINATES,
+  ADD_NEW_COORDINATES,
+} from './actionTypes'
+import { createAction } from 'redux-actions'
 
-export const inputNewAdress = adress => ({
-  type: INPUT_ADRESS,
-  payload: adress,
-})
+export const inputNewAdress = createAction(INPUT_ADRESS)
 
-export const loadAdresses = adresses => ({
-  type: LOAD_ADRESSES,
-  payload: adresses,
-})
+export const loadAdresses = createAction(LOAD_ADRESSES)
 
-export const selectAdress = adress => ({
-  type: SELECT_ADRESS,
-  payload: adress,
-})
+export const selectAdress = createAction(SELECT_ADRESS)
 
-export const loadFetchCoordinates = adress => ({
-  type: LOAD_COORDINATES,
-  payload: adress,
-})
+export const loadFetchCoordinates = createAction(LOAD_COORDINATES)
 
-export const addCoordinates = coordinates => ({
-  type: ADD_NEW_COORDINATES,
-  payload: coordinates,
-})
+export const addCoordinates = createAction(ADD_NEW_COORDINATES)

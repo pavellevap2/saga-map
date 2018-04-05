@@ -1,35 +1,62 @@
 import React from 'react'
-import AdressTip from './AdressTip'
+import AdressTip from '../AdressTip'
 import * as R from 'ramda'
 import styled from 'styled-components'
+import search from './search.png'
+import geo from './geo.svg'
 
 const InputAdressContainer = styled.div`
-  margin: 2em 1em;
-`
-const AdressForm = styled.div`
-  display: flex;
+  z-index: 99999;
+  position: absolute;
+  top: 4em;
+  left: 1em;
 `
 
+const InputForm = styled.div`
+  display: flex;
+  border: 1px solid gray;
+  width: 45vh;
+`
+const GeoBtn = styled.button`
+  border: none;
+  background-color: white;
+  padding-right: 1em;
+`
+
+const InputIcon = styled.img`
+  background-color: white;
+  width: 2em;
+  height: 2em;
+`
 const InputAdressName = styled.input`
-  width: 85vh;
-  color: blue;
-  font-size: 1.3em;
-  font-weight: 700;
-  padding: 0.2em 0;
+  width: 100%;
+  color: black;
+  font-size: 1.1em;
+  height: 1.7em;
+  vertical-align: middle;
+  font-weight: 200;
+  padding: 0.4em 0;
+  background-color: white !important;
+  border: none;
 `
 const SearchBtn = styled.button`
-  border: 2px solid blue;
+  border: none;
   background-color: white;
-  color: blue;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-left: 2.4em;
-  padding: 0.5em 2em;
-  background-color: lightgray;
-  &:hover {
-    transition: 2s;
-    background-color: antiquewhite;
-  }
+`
+
+const TipsList = styled.ul`
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  width: 45vh;
+  border: 1px solid gray;
+`
+const ClearInputBtn = styled.button`
+  background-color: white;
+  color: gray;
+  font-size: 1.3em;
+  border: none;
+  margin-left: 0.3;
 `
 
 class InputAdress extends React.Component {
@@ -70,6 +97,16 @@ class InputAdress extends React.Component {
     this.closeTips()
   }
 
+  clearInput() {
+    this.props.selectAdress('')
+    this.closeTips()
+  }
+  onHoverTip(tipIndex) {
+    this.setState({
+      currTip: tipIndex,
+    })
+  }
+
   render() {
     const { adress, adresses, selectAdress, addCoordinates } = this.props
     const { isTipChoosen, currTip } = this.state
@@ -80,9 +117,12 @@ class InputAdress extends React.Component {
 
     return (
       <InputAdressContainer>
-        <AdressForm>
+        <InputForm>
+          <GeoBtn>
+            <InputIcon src={geo} />
+          </GeoBtn>
           <InputAdressName
-            placeholder={'Введите адресс'}
+            placeholder={'Введите адресс или место'}
             value={adress}
             onChange={e => this.inputAdress(e)}
             onKeyDown={e => {
@@ -97,10 +137,16 @@ class InputAdress extends React.Component {
               }
             }}
           />
-          <SearchBtn onClick={() => addCoordinates(adress)}>ПОИСК</SearchBtn>
-        </AdressForm>
+          {adress.length ? (
+            <ClearInputBtn onClick={() => this.clearInput()}>x</ClearInputBtn>
+          ) : null}
+          <SearchBtn onClick={() => addCoordinates(adress)}>
+            <InputIcon src={search} alt={'search'} />
+          </SearchBtn>
+        </InputForm>
+
         {!isTipChoosen ? (
-          <ul>
+          <TipsList>
             {adresses.map((adress, i) => (
               <AdressTip
                 key={i}
@@ -109,9 +155,10 @@ class InputAdress extends React.Component {
                 selectAdress={selectAdress}
                 adress={adress}
                 closeTips={() => this.closeTips()}
+                onHoverTip={i => this.onHoverTip(i)}
               />
             ))}
-          </ul>
+          </TipsList>
         ) : null}
       </InputAdressContainer>
     )

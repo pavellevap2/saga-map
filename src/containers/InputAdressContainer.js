@@ -1,6 +1,9 @@
 import InputAdress from '../components/InputAdress'
+
 import { connect } from 'react-redux'
-import { getAdress, getAdresses, getCoordinates } from '../selectors/selectors'
+
+import { getAdress, getAdresses } from '../selectors/inputSelectors'
+
 import {
   inputNewAdress,
   selectAdress,
@@ -10,7 +13,6 @@ import {
 const mapStateToProps = state => ({
   adress: getAdress(state),
   adresses: getAdresses(state),
-  coordinates: getCoordinates(state),
 })
 
 const mapDispatchToProps = dispatch => ({

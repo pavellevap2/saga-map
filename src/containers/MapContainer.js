@@ -1,6 +1,6 @@
 import Map from '../components/Map'
 import { connect } from 'react-redux'
-import { getCoordinates } from '../selectors/selectors'
+import { getCoordinates } from '../selectors/mapSelectors'
 
 const mapStateToProps = state => ({
   coordinates: getCoordinates(state),

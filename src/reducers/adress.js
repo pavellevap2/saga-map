@@ -1,13 +1,10 @@
-import { INPUT_ADRESS, SELECT_ADRESS } from '../actions/actions'
+import { INPUT_ADRESS, SELECT_ADRESS } from '../actions/actionTypes'
+import { handleAction, combineActions } from 'redux-actions'
 
-const adress = (state = '', { type, payload }) => {
-  switch (type) {
-    case INPUT_ADRESS:
-      return payload
-    case SELECT_ADRESS:
-      return payload
-    default:
-      return state
-  }
-}
+const adress = handleAction(
+  combineActions(INPUT_ADRESS, SELECT_ADRESS),
+  (state, { payload }) => payload,
+  '',
+)
+
 export default adress

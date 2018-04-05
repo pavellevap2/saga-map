@@ -1,11 +1,9 @@
-import { ADD_NEW_COORDINATES } from '../actions/actions'
+import { ADD_NEW_COORDINATES } from '../actions/actionTypes'
+import { handleAction } from 'redux-actions'
 
-const coordinates = (state = '', { type, payload }) => {
-  switch (type) {
-    case ADD_NEW_COORDINATES:
-      return payload
-    default:
-      return state
-  }
-}
+const coordinates = handleAction(
+  [ADD_NEW_COORDINATES],
+  (state, { payload }) => payload,
+  '',
+)
 export default coordinates
