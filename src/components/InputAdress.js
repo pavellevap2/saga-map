@@ -31,9 +31,6 @@ const SearchBtn = styled.button`
     background-color: antiquewhite;
   }
 `
-const AdressesList = styled.ul`
-  border: 1px solid blue;
-`
 
 class InputAdress extends React.Component {
   constructor(props) {
@@ -54,8 +51,7 @@ class InputAdress extends React.Component {
     })
   }
 
-  goDown(adress) {
-    this.props.selectAdress(adress)
+  goDown() {
     this.setState({
       currTip: this.state.currTip + 1,
     })
@@ -77,11 +73,10 @@ class InputAdress extends React.Component {
   render() {
     const { adress, adresses, selectAdress, addCoordinates } = this.props
     const { isTipChoosen, currTip } = this.state
-    const currAdress = n =>
-      R.path(
-        ['GeoObject', 'metaDataProperty', 'GeocoderMetaData', 'text'],
-        adresses[currTip + n],
-      )
+    const currAdress = R.path(
+      ['GeoObject', 'metaDataProperty', 'GeocoderMetaData', 'text'],
+      adresses[currTip],
+    )
 
     return (
       <InputAdressContainer>
@@ -94,11 +89,11 @@ class InputAdress extends React.Component {
               if (e.keyCode === 40) {
                 currTip === adresses.length - 1
                   ? this.toTopOfList()
-                  : this.goDown(currAdress(1))
+                  : this.goDown()
               } else if (e.keyCode === 38) {
                 this.goUp()
               } else if (e.keyCode === 13) {
-                this.selectCurrAdress(currAdress(0))
+                this.selectCurrAdress(currAdress)
               }
             }}
           />
